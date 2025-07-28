@@ -5,11 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./prelaunch.css" />
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="contain">
+    <div class="contain" id="contain">
         <div class="top">
             <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%">
                 <!-- <line x1="0" y1="200" x2="1000" y2="200" stroke="red" stroke-width="0.1" /> -->
@@ -17,59 +18,28 @@
                     transform="translate(0 -70)" />
             </svg>
         </div>
-        <!-- <div class="cntTriangulos">
-            <div class="triangulo tr1"></div>
-            <div class="triangulo tr2"></div>
-            <div class="triangulo tr3"></div>
-            <div class="triangulo tr4"></div>
-            <div class="triangulo tr5"></div>
-            <div class="triangulo tr6"></div>
-            <div class="triangulo tr7"></div>
-            <div class="triangulo tr8"></div>
-            <div class="triangulo tr9"></div>
-            <div class="triangulo tr10"></div>
-            <div class="triangulo tr11"></div>
-            <div class="triangulo tr12"></div>
-            <div class="triangulo tr13"></div>
-            <div class="triangulo tr14"></div>
-            <div class="triangulo tr15"></div>
-            <div class="triangulo tr16"></div>
-            <div class="triangulo tr17"></div>
-            <div class="triangulo tr18"></div>
-            <div class="triangulo tr19"></div>
-            <div class="triangulo tr20"></div>
-        </div> -->
-
+    
         <div class="agua1"></div>
         <div class="agua2"></div>
         <div class="agua3"></div>
+        
         <div class="cntRedes">
-            <div class="redes">
-                <div class="redIcn">
-                    <img src="" alt="">
-                </div>
-                <div class="redIcn">
-                    <img src="" alt="">
-                </div>
-                <div class="redIcn">
-                    <img src="" alt="">
-                </div>
-                <div class="redIcn">
-                    <img src="" alt="">
-                </div>
-                <div class="redIcn">
-                    <img src="" alt="">
-                </div>
-
-            </div>
-            <p>
-                Siguenos en nuestras redes sociales oficiales*
-            </p>
+            <model-viewer 
+                class="cntModelo"
+                src="./heart_-_animated_anatomical_3d_model.glb"
+                alt="Un modelo 3D de ejemplo" 
+                auto-rotate
+                camera-controls 
+                shadow-intensity="0.0">
+            </model-viewer>
         </div>
+
         <div class="cntTexto">
+            
             <div class="cntLogo">
                 <img src="./Isólogo LS.svg" alt="Liber Sauls">
             </div>
+            
             <div class="txt">
                 <h2 class="tit">
                     Cuidando tu salud desde la prevención
@@ -77,10 +47,11 @@
                 <p class="des">
                     Estamos desarrollando una plataforma digital dedicada a la prevención y atención temprana de
                     enfermedades. Una herramienta pensada para fortalecer tu calidad de vida y apoyar al sistema de
-                    salud en México. Pronto podrás afiliarte y recibir atención directa, preventiva y accesible
+                    salud en México. Pronto podrás afiliarte y recibir atención directa, preventiva y accesible.
                 </p>
-                <button class="btn">Avísenme cuando esté listo</button>
-
+                <button class="btn" type="button" popovertarget="registroPop" popovertargetaction="show">
+                    Avisarme cuando esté listo
+                </button>
                 <div class="pie">
                     <p>
                         * Liber Salus es un proyecto de salud digital. Todos los enlaces oficiales serán comunicados
@@ -88,10 +59,63 @@
                     </p>
                     <p>
                         Liber Salus SA de CV® 2025 RFC LSA120511F20 Todos los Derechos reservados | México CDMX. CP
-                        09270 | contacto@libersalus.com +052 55 51065087
+                        09270 | contacto@libersalus.com +0525551065087
                     </p>
                 </div>
             </div>
+
+        </div>
+
+        <div class="modal" id="registroPop" popover="manual">
+            
+            
+                
+                <button 
+                    class="modalCerrar"
+                    type="button"
+                    popovertarget="registroPop"
+                    popovertargetaction="hide"
+                    aria-label="Cerrar">
+                        X
+                </button>
+                <div class="top">
+                    <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%">
+                        <!-- <line x1="0" y1="200" x2="1000" y2="200" stroke="red" stroke-width="0.1" /> -->
+                        <path d="M 0 50 Q 400 400 448 205, 466 30 1000 225, Q 1000 0 1000 0 " fill="#001345"
+                            transform="translate(0 -180)" />
+                    </svg>
+                </div>
+
+                <div class="izLogo">
+                    <div class="cntImg">
+                        <img src="./Isólogo LS.svg" alt="Liber Salus">
+                    </div>
+
+                </div>
+                <form class="formulario" action="">
+                    <p>Por favor compartenos tu nombre y al correo donde te enviaremos al notifiacion cuando nuestros
+                        servicios se encuentren activos*</p>
+                    <label for="">
+                        Nombre:
+                        <input type="text" placeholder="Ingresa tu Nombre Compleo">
+                    </label>
+                    <label for="">
+                        Correo Electronico
+                        <input type="email" placeholder="Ingresa tu correo electronico">
+                    </label>
+                    <button class="btn" type="button" popovertarget="registroPop" popovertargetaction="hide">
+                        Registrar
+                    </button>
+                    <div class="pie">
+                        <p>
+                            * Liber Salus es un proyecto de salud digital. En cuanto tengamos novedades de lanzamiento, te haremos llegar los beneficios. </p>
+                        <p>
+                            Liber Salus SA de CV ® 2025 LSA120511F20 Todos los Derechos reservados | México CDMX. CP
+                            09270 | contacto@libersalus.com +0525551065087
+                        </p>
+                    </div>
+                </form>
+            
         </div>
     </div>
 

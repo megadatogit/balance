@@ -3,10 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    color: #001345;    
+    color: #001345;
 }
 
-.contain{
+.contain {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -17,18 +17,14 @@
 .top {
     position: absolute;
     width: 100%;
-    border: 1px dashed lightgrey;
+    /* border: 1px dashed lightgrey; */
     top: 0;
     left: 0;
-
+    overflow: hidden;
+    z-index: -1;
+    border-top-right-radius: 18px;
 }
 
-.cntTriangulos {
-    position: absolute;
-    width: 35%;
-    height: 100vh;
-    /* border: 2px dashed red; */
-}
 
 .cntRedes {
     width: 35%;
@@ -36,24 +32,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(15%);
+    /* transform: translateY(15%); */
     flex-direction: column;
     gap: 1rem;
-}
-
-.redes {
     /* border: 2px dashed; */
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
 }
 
-.redIcn {
-    width:  40px;
-    height: 40px;
-    background-color: #001345;
-    border-radius: 50%;
+.cntModelo {
+    /* border: 2px dashed; */
+    width: 100%;
+    height: 70%;
+
+
 }
+
 
 .cntTexto {
     width: 65%;
@@ -66,7 +58,7 @@
     align-items: end;
     gap: 2rem;
     padding-top: 8rem;
-    
+    /* z-index: 1; */
 }
 
 .cntLogo {
@@ -87,7 +79,7 @@
 }
 
 .des {
-    margin: 1.5rem 0 ;
+    margin: 1.5rem 0;
     font-size: 1.2rem;
     line-height: 1.4;
 }
@@ -96,13 +88,19 @@
     width: fit-content;
     flex: 0 0 auto;
     align-self: flex-end;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 25px;
     background-color: #1A85BA;
     color: white;
     font-size: 1.1rem;
     margin-bottom: 3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: #001345;
+    }
 }
 
 .pie {
@@ -115,9 +113,9 @@
     align-self: flex-end;
 }
 
-.pie > p {
+.pie>p {
     color: darkgray;
-    
+
 }
 
 
@@ -129,6 +127,7 @@
     clip-path: polygon(87% 0, 100% 0, 100% 100%, 46% 100%);
     background-color: #bdbdbd23;
     right: 0;
+    z-index: -1;
 }
 
 .agua2 {
@@ -138,7 +137,7 @@
     background-color: #bdbdbd23;
     right: 15%;
     clip-path: polygon(63% 0, 13% 0, 63% 76%);
-    
+
 }
 
 .agua3 {
@@ -148,530 +147,307 @@
     background-color: #bdbdbd23;
     left: 0%;
     clip-path: polygon(31% 0, 6% 0, 56% 100%);
+
+}
+
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+
+
+
+.modalCerrar {
+    position: absolute;
+    top: 1rem;
+    left: 1.3rem;
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+.modal:popover-open {
+    opacity: 1;
+    pointer-events: auto;
+    position: absolute;
+    width: 60%;
+    height: 90vh;
+    min-height: 600px;    
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 5rem 3rem;
+    border: none;
+    border-radius: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 2rem;
+    box-shadow: 3px 3px 23px rgba(0, 0, 0, 0.4);
+    transition: width 0.6s ease;
+    overflow: hidden;
     
+    
+    & label {
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        gap: 0.15rem;
+
+
+        & input {
+            appearance: none;
+            outline: none;
+            padding: 0.5rem;
+            border: 1px solid lightgray;
+            border-radius: 4px;
+        }
+    }
+}
+
+
+.izLogo {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .cntImg {
+
+        width: 80%;
+
+    }
+
+
+}
+
+.izLogo>.pie {
+    width: 100%;
+
+}
+
+.formulario {
+    /* border: 2px dashed; */
+    width: 100%;
+    height: 100%;
+    padding: 2rem 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+
+    &>label {
+        width: 80%;
+    }
+
+    & p {
+        width: 80%;
+        text-align: start;
+        line-height: 1.2;
+    }
+
+    &>.btn {
+        align-self: center;
+    }
+
+    &>.pie {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        flex-direction: column;
+        align-self: flex-end;
+        
+
+        &>p {
+            width: 100%;
+        }
+    }
 }
 
 .tr1 {
     position: absolute;
-    width:  50px;
+    width: 50px;
     height: 50px;
     background-color: #ffaa01;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     transform: rotate(190deg) translate(-155%, -150%);
-    top:  50px;
+    top: 50px;
     left: 50px;
-    animation: tr1 10 alternate infinite ;
-}
-@keyframes tr1 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr2 {
-    position: absolute;
-    width:  50px;
-    height: 30px;
-    background-color: #00beeb;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-5deg);
-    top:  20%;
-    left: 45%;
-    animation: tr2 10 alternate infinite ;
-}
-@keyframes tr2 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr3 {
-    position: absolute;
-    width:  70px;
-    height: 70px;
-    background-color: #a3037f;
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-265deg);
-    top:  25%;
-    left: 65%;
-    animation: tr3 10 alternate infinite ;
-}
-
-@keyframes tr3 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr4 {
-    position: absolute;
-    width:  50px;
-    height: 30px;
-    background-color: #fe4f22;
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-175deg);
-    top:  30%;
-    left: 15%;
-    animation: tr4 10 alternate infinite ;
-}
-@keyframes tr4 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr5 {
-    position: absolute;
-    width:  30px;
-    height: 10px;
-    background-color: #00beeb;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-305deg);
-    top:  30%;
-    left: 41%;
-    animation: tr5 10 alternate infinite ;
-}
-@keyframes tr5 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr6 {
-    position: absolute;
-    width:  50px;
-    height: 50px;
-    background-color: #a3037f;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-105deg);
-    top:  25%;
-    left: 47%;
-    animation: tr6 10 alternate infinite ;
-}
-@keyframes tr6 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr6 {
-    position: absolute;
-    width:  50px;
-    height: 50px;
-    background-color: #a3037f;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-105deg);
-    top:  25%;
-    left: 47%;
-    animation: tr6 10 alternate infinite ;
-}
-@keyframes tr6 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr7 {
-    position: absolute;
-    width:  100px;
-    height: 40px;
-    background-color: #0175ae;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(40deg);
-    top:  38%;
-    left: 32%;
-    animation: tr7 10 alternate infinite ;
-}
-@keyframes tr7 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr8 {
-    position: absolute;
-    width:  100px;
-    height: 70px;
-    background-color: #e50f2b;
-    clip-path: polygon(30% 0%, 0% 100%, 100% 100%);
-    transform: rotate(90deg);
-    top:  48%;
-    left: 12%;
-    animation: tr8 10 alternate infinite ;
-}
-@keyframes tr8 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr9 {
-    position: absolute;
-    width:  20px;
-    height: 15px;
-    background-color: #e50f2b;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(90deg);
-    top:  57%;
-    left: 22%;
-    animation: tr9 10 alternate infinite ;
-}
-@keyframes tr9 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
-
-.tr10 {
-    position: absolute;
-    width:  100px;
-    height: 35px;
-    background-color: #0175ae;
-    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-10deg);
-    top:  48%;
-    left: 52%;
-    animation: tr10 10 alternate infinite ;
-}
-@keyframes tr10 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
+    animation: tr1 10 alternate infinite;
 }
 
 
-.tr11 {
-    position: absolute;
-    width:  50px;
-    height: 50px;
-    background-color: #a3037f;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-105deg);
-    top:  41%;
-    left: 77%;
-    animation: tr11 10 alternate infinite ;
-}
-@keyframes tr11 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
+@media (max-width:960px) {
 
-.tr12 {
-    position: absolute;
-    width:  90px;
-    height: 90px;
-    background-color: #a3037f;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(105deg);
-    top:  58%;
-    left: 63%;
-    animation: tr12 10 alternate infinite ;
-}
-@keyframes tr12 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
+    .modal:popover-open {
+        flex-direction: column;
+        width: 95%;
     }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
 
-.tr13 {
-    position: absolute;
-    width:  30px;
-    height: 30px;
-    background-color: #00beeb;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    transform: rotate(-05deg);
-    top:  68%;
-    left: 65%;
-    animation: tr13 10 alternate infinite ;
-}
-@keyframes tr13 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
+    .contain {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        flex-direction: column;
+        /* border: 2px dashed red; */
     }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
 
-.tr14 {
-    position: absolute;
-    width:  100px;
-    height: 35px;
-    background-color: #00beeb;
-    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
-    transform: rotate(40deg);
-    top:  78%;
-    left: 47%;
-    animation: tr14 10 alternate infinite ;
-}
-@keyframes tr14 {
-      0%{
-        top:  0;
+    .top {
+        position: absolute;
+        width: 100%;
+        border: none;
+        top: 0;
         left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
 
-.tr15 {
-    position: absolute;
-    width:  100px;
-    height: 70px;
-    background-color: #e50f2b;
-    clip-path: polygon(30% 0%, 0% 100%, 100% 100%);
-    transform: rotate(120deg);
-    top:  88%;
-    left: 12%;
-    animation: tr15 10 alternate infinite ;
-}
-@keyframes tr15 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
     }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
 
-.tr16 {
-    position: absolute;
-    width:  20px;
-    height: 15px;
-    background-color: #e50f2b;
-    clip-path: polygon(00% 0%, 0% 100%, 100% 100%);
-    transform: rotate(90deg);
-    top:  82%;
-    left: 10%;
-    animation: tr16 10 alternate infinite ;
-}
-@keyframes tr16 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
+    
+    .cntRedes {
+        width: 100%;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* transform: translateY(15%); */
+        flex-direction: column;
+        gap: 1rem;
+        /* border: 2px dashed; */
     }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
 
-.tr17 {
-    position: absolute;
-    width:  50px;
-    height: 50px;
-    background-color: #ffaa01;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    transform: rotate(190deg) translate(-155%, -150%);
-    top:  80%;
-    left: 59%;
-    animation: tr17 10 alternate infinite ;
-}
-@keyframes tr17 {
-      0%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-     50%{
-        top:  30px;
-        left: 0;
-        transform: rotate(160deg) translate(-15%, -175%);
-    }
-    100%{
-        top:  0;
-        left: 0;
-        transform: rotate(190deg) translate(-155%, -155%);
-    }
-}
+    .cntModelo {
+        /* border: 2px dashed; */
+        width: 100%;
+        height: auto;
 
+
+    }
+
+    .redes {
+        /* border: 2px dashed; */
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    
+    .cntTexto {
+        width: 100%;
+        /* border: 2px dashed; */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 8rem;
+        z-index: 1;
+    }
+
+    .cntLogo {
+        width: 40%;
+        margin-right: none;
+    }
+
+    .txt {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+    }
+
+    .tit {
+        font-size: 3.0rem;
+        font-weight: 400;
+    }
+
+    .des {
+        margin: 1.5rem 0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+
+    .btn {
+        width: fit-content;
+        flex: 0 0 auto;
+        align-self: center;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        background-color: #1A85BA;
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+
+    .pie {
+        justify-content: start;
+        border-top: 1px solid;
+        font-size: 0.65rem;
+        padding-top: 0.5rem;
+        line-height: 1.2;
+        width: 100%;
+        align-self: flex-start;
+        text-align: start;
+    }
+
+    .pie>p {
+        color: darkgray;
+
+    }
+
+
+
+    .agua1 {
+        display: none;
+        position: absolute;
+        width: 30%;
+        height: 100dvh;
+        clip-path: polygon(87% 0, 100% 0, 100% 100%, 46% 100%);
+        background-color: #bdbdbd23;
+        right: 0;
+    }
+
+    .agua2 {
+        display: none;
+        position: absolute;
+        width: 70%;
+        height: 100%;
+        background-color: #bdbdbd23;
+        right: 15%;
+        clip-path: polygon(63% 0, 13% 0, 63% 76%);
+
+    }
+
+    .agua3 {
+        display: none;
+        position: absolute;
+        width: 70%;
+        height: 100%;
+        background-color: #bdbdbd23;
+        left: 0%;
+        clip-path: polygon(31% 0, 6% 0, 56% 100%);
+
+    }
+
+}
